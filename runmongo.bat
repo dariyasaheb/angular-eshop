@@ -1,0 +1,1 @@
+mongod --dbpath=F:\angular-eshop\database
