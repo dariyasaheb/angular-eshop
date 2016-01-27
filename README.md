@@ -1,9 +1,10 @@
 # angular-eshop
 Angular E-Shop
 ## How to run app
+before starting project creating ssh key using commond ssh-keygen
 1. git clone git@github.com:dariyasaheb/angular-eshop.git //clone repository from given url
 2. npm install express-generator -g
-3. express .
+3. express.
 4. npm install
 5. npm start
 
