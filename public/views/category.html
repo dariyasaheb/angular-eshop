@@ -1,0 +1,27 @@
+      <div class="container">
+            <div class="container">
+
+                <div class="row" >
+                    <div class="col-md-12">
+                        <p><a href="#/"> HOME </a> > <a href="#/category/{{category_url}}">{{category.name}} </a>  >  <a href="">{{subcategory.name}} </a> </p>
+                    
+                    </div>
+                    <div class="col-sm-4 col-sm-4 col-sm-4" ng-repeat="data in product">
+                    
+                        <div class="thumbnail"  style="width:302px; height:227px">
+                           <a href="#/product/{{data.product_id}}"> <img  ng-src="{{data.url}}" alt="" ></a>
+                            <div class="caption">
+                                <p>{{data.name | uppercase}}</p>
+                                </h4>
+                                <p class="pull-left"><b>{{data.discountprice}}</b><span style="padding-left:10px; font-size:12px;"><s>{{data.price}}</s></span>
+
+                            </div>
+                            <div class="pull-left"></div>
+                        </div>
+                     
+                    </div>
+
+                </div>
+
+            </div>
+        </div>

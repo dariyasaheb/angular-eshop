@@ -34,6 +34,7 @@ body {
     width: 100%;
 }
 
+
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
@@ -80,7 +81,6 @@ footer {
 .input-search{
     border: 1px solid #ccc;
     background-color: #fff;
-    background: white url('../img/search-icon.png') no-repeat right;
     margin-top: 10px;
     width: 100%;
 }
@@ -91,6 +91,23 @@ footer {
     display: block;
     margin-top: 0; // remove the gap so it doesn't close
  }
+
+
+/*---------------------change for new--------------------------------*/ 
+
+
+
+
+.nav>li:last-child .dropdown-menu{
+    display: none;
+}
+
+
+
+
+
+
+
  /*.list-unstyled{
     margin-left: 12px;
     margin-top: 3px;

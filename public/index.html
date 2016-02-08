@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Eshop">
 
 <head>
+    
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +25,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+
+
 </head>
 
 <body>
@@ -43,10 +47,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 id="logo_heading"><span id="logo1">Room</span><span id="logo2">Cart</span></h1>
+                <div class="col-md-6">
+               <a href="#/"> <h1 id="logo_heading"><span id="logo1">{{title.site1}}</span><span id="logo2">{{title.site2}}</span></h1></a>
+               </div>
             </div>
             <div class="col-md-6 text-center">
-                <h3 id="logo_heading" style="font-size:20px;margin-top: 50px;"><span id="logo1"><a href="#">Login</a></span> / <span id="logo2"><a href="#">Signup</a></span> <a href="#" id="cart_button">CART</a></h3>
+                <h3 id="logo_heading" style="font-size:20px;margin-top: 50px;"><span id="logo1"><a href="#/login">Login</a></span> / <span id="logo2"><a href="#/signup">Signup</a></span> <a href="#/checkout" id="cart_button">CART</a></h3>
             </div>
             <div class="col-md-12">
             <!-- Navigation -->
@@ -59,137 +65,21 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#">SOFAS</a>
-                            <div class="dropdown-menu" style="min-width: 300px;">
-                                <div class="dropdown-inner">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <ul class="list-unstyled">
-                                                <li><a href="#">ONE SEATER</a></li>
-                                                <li><a href="#">TWO SEATER</a></li>
-                                                <li><a href="#">THREE SEATER</a></li>
-                                                <li><a href="#">SOFA SETS</a></li>
-                                              </ul>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ul class="list-unstyled">
-                                                <li><a href="http://localhost/opencart/upload/index.php?route=product/category&amp;path=25_32">SOFA CUM BED</a></li>
-                                                <li><a href="#">RECLINERS</a></li>
-                                                <li><a href="#">OTHERS</a></li>
-                                                <li><a href="#">ALL SOFAS</a></li>
-                                              </ul>
-                                        </div>
-                                    </div> 
-                              </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">BEDS</a>
+                        <li class="dropdown" ng-repeat="cat in data.menu">
+                            <a href="#/category/{{cat.category_url}}">{{cat.name}}</a>
                             <div class="dropdown-menu" style="min-width: 160px;">
                                 <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">SINGLE BEDS</a></li>
-                                        <li><a href="#">QUEEN SIZE BEDS</a></li>
-                                        <li><a href="#">KING SIZE BEDS</a></li>
-                                        <li><a href="#">SOFA CUM BED</a></li>
-                                        <li><a href="#">KIDS BEDS</a></li>
-                                        <li><a href="#">ALL BEDS</a></li>
-                                      </ul>
-                              </div>
+                                        <ul class="list-unstyled">
+                                                <li ng-repeat= "items in cat.subcategory">
+                                                <a href="#/category/{{cat.category_url}}/{{items.subcategory_url}}">{{items.name}}</a></li>
+                                         
+                                        </ul>
+                              	</div>
                             </div>
                         </li>
-                        <li class="dropdown">
-                            <a href="#">CHAIRS</a>
-                            <div class="dropdown-menu" style="min-width: 155px;">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">OFFICE CHAIRS</a></li>
-                                        <li><a href="#">DINING CHAIRS</a></li>
-                                        <li><a href="#">LOUNGE CHAIRS</a></li>
-                                        <li><a href="#">BEAN BAG CHAIRS</a></li>
-                                        <li><a href="#">BEACH CHAIRS</a></li>
-                                        <li><a href="#">STOOLS</a></li>
-                                        <li><a href="#">BENCHES</a></li>
-                                        <li><a href="#">ALL CHAIRS</a></li>
-                                      </ul>
-                              </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">TABLES</a>
-                            <div class="dropdown-menu" style="min-width: 305px;">
-                                <div class="dropdown-inner">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <ul class="list-unstyled">
-                                                <li><a href="#">DINING TABLES</a></li>
-                                                <li><a href="#">COFFEE TABLES</a></li>
-                                                <li><a href="#">STUDY TABLES</a></li>
-                                                <li><a href="#">CONSOLE TABLES</a></li>
-                                              </ul>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <ul class="list-unstyled">
-                                                <li><a href="#">SIDE TABLES</a></li>
-                                                <li><a href="http://localhost/opencart/upload/index.php?route=product/category&amp;path=25_32">3 SEATER SETS</a></li>
-                                                <li><a href="#">4 SEATER SETS</a></li>
-                                                <li><a href="#">6 SEATER SETS</a></li>
-                                              </ul>
-                                        </div>
-                                    </div>
-                              </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">MATTRESS</a>
-                            <div class="dropdown-menu" style="min-width: 200px;">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <li><a href="http://localhost/opencart/upload/index.php?route=product/category&amp;path=25_32">INNERSPRING MATTRESS</a></li>
-                                        <li><a href="#">HYBRID MATTRESS</a></li>
-                                        <li><a href="#">WATERBED</a></li>
-                                        <li><a href="#">FOAM MATTRESS</a></li>
-                                        <li><a href="#">AIR BED MATTRESS</a></li>
-                                        <li><a href="#">LATEX MATTRESS</a></li>
-                                      </ul>
-                              </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">COMFORTERS</a>
-                            <div class="dropdown-menu" style="min-width: 200px;">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">DOWN COMFORTERS</a></li>
-                                        <li><a href="#">POLYESTER COMFORTERS</a></li>
-                                        <li><a href="#">WOOL COMFORTERS</a></li>
-                                        <li><a href="#">COTTON COMFORTERS</a></li>
-                                        <li><a href="#">SILK COMFORTERS</a></li>
-                                      </ul>
-                              </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">STORAGE</a>
-                            <div class="dropdown-menu" style="min-width: 160px;">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">BOOKSHELVES</a></li>
-                                        <li><a href="#">WARDROBES</a></li>
-                                        <li><a href="#">SHOERACKS</a></li>
-                                        <li><a href="#">DRAWERS</a></li>
-                                        <li><a href="http://localhost/opencart/upload/index.php?route=product/category&amp;path=25_32">BAR CABINETS</a></li>
-                                        <li><a href="#">DRESSING TABLES</a></li>
-                                      </ul>
-                              </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">NEW</a>
-                        </li>
+                        
                     </ul>
                     <div class="col-md-2 pull-right">
                         <span>
@@ -205,162 +95,12 @@
             </div>
         </div>
     
-
+       <!-- body -->
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-12" >
 
-                <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="img/banner4.jpg" style="height:410px;" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="img/banner1.jpg" style="height:410px;" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="img/banner2.jpg" style="height:410px;" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="#">First Product</a>
-                                </h4>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$64.99</h4>
-                                <h4><a href="#">Second Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$74.99</h4>
-                                <h4><a href="#">Third Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="#">Fourth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Fifth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <h4><a href="#">Like this template?</a>
-                        </h4>
-                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                    </div>
-
-                </div>
+               <ng-view></ng-view>
 
             </div>
 
@@ -377,7 +117,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Room Cart 2014</p>
                 </div>
             </div>
         </footer>
@@ -387,9 +127,12 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="js/modules/app.js"></script>
+    
 
 </body>
 
