@@ -52,8 +52,7 @@
                             <div >
                             <h2 style="color:#5ac6c7;">{{product.discountprice}}</h2>
                             <h4>Estimate Orginal <s>{{product.price}}</s></h4>
-                            <select ng-model="qty">
-                                <option >Select Qty</option>
+                            <select ng-model="qty" ng-init="qty=1">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
@@ -67,24 +66,3 @@
         </div> 
 </div>
 
-<div id="thumbWrapper">
-    <ul id="thumblist">
-        <li ng-repeat="slide in slides">
-            <img ng-src="{{slide.thm}}"  class="active" alt="{{slide.description}}" ng-click="setcurrentimage($index)">
-        </li>
-    </ul>
-</div>
-
-
-
-
-        <div class="row">
-            <div class="heading">
-                <h2>Recomended Products</h2>
-                <div class="col-sm-4 ">
-                    <img ng-src={{product.url}} ng-img-id="2" ng-click="swapImage(2)">
-                </div>
-            </div>
-        </div>      
-    
-    </div>

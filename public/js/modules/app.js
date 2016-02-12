@@ -26,9 +26,13 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
 			templateUrl:'views/signup.html',
 			controller:'SignupController'
 		})
+		.when('/cart',{
+			templateUrl:'views/cart.html',
+			controller:'CartController'
+		})
 		.when('/checkout',{
 			templateUrl:'views/checkout.html',
-			controller:'CheckoutController'
+			controller:'checkoutController'
 		})
 		
 		
@@ -45,10 +49,11 @@ app.run(['$http','$rootScope', function($http,$rootScope) {
 	
 	
 }])
-app.controller('Maincontroller',['$scope','$rootScope',function($scope,$rootScope){
+app.controller('Maincontroller',['$scope','$rootScope', function($scope,$rootScope){
 	
-		$scope.product =$rootScope.data.product;
-
+		$scope.product = $rootScope.data.product;
+		
+		
 		
 		
 		
@@ -125,7 +130,9 @@ app.controller('SubcategoryController',['$scope','$rootScope', '$routeParams',fu
 
 
 app.controller('ProductController',['$scope','$rootScope','$routeParams','CartService',function($scope,$rootScope,$routeParams, CartService){
-		$scope.product_id = $routeParams.product_id;	
+		$scope.product_id = $routeParams.product_id;
+
+
 
 
 		for (var p in $rootScope.data.product) {
@@ -192,9 +199,10 @@ app.controller('ProductController',['$scope','$rootScope','$routeParams','CartSe
 			var item = {
 				product_id : product.product_id,
 				url : product.url,
-				price : product.price,
+				name :product.name,
+				price : product.discountprice,
 				qty :  parseInt(qty),
-				total_price : (parseInt(qty) * parseInt(product.price))
+				total_price : (parseInt(qty) * parseInt(product.discountprice))
 			}
 		
 			CartService.addToCart(item);
@@ -205,7 +213,8 @@ app.controller('ProductController',['$scope','$rootScope','$routeParams','CartSe
 		
 }]);
 
-app.controller('CheckoutController',['$scope','$rootScope','CartService',function($scope,$rootScope, CartService){
+app.controller('CartController',['$scope','$rootScope','CartService',function($scope,$rootScope, CartService){
+	
 
 	$scope.cart = CartService.cart;
 	/**
@@ -242,16 +251,20 @@ app.factory('CartService', function () {
 			items: [],
 			count: 0,
 			total_cart_price: 0
-		},
+		},	
 		/**
 		 * @param {[type]}
 		 */
 		addToCart: function(product) {
-			console.log("Add to cart");
+			
 			
 			var foundAt = exitProduct(product.product_id);
 
-			console.log(foundAt);
+			/**
+			 * [if description]
+			 * @param  {[type]} foundAt [here we are taking -1 because array start with index 0]
+			 * @return {[type]}         [description]
+			 */
 			if (foundAt == -1) {
 				this.cart.items.push(product);
 			}else{
@@ -283,3 +296,20 @@ app.factory('CartService', function () {
 })
 
 
+
+app.controller('checkoutController',['$scope','$rootScope','CartService',function($scope,$rootScope, CartService){
+
+	$scope.cart = CartService.cart;
+	console.log($scope.cart);
+}]);
+
+app.directive('productTile', function() {
+	var directive = {
+		restrict: 'E',
+		templateUrl : 'views/producttile.html',
+		scope : {
+			product :"="
+		}
+	}
+	return directive;
+})
